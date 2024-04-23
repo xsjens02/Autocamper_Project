@@ -1,5 +1,7 @@
 package com.example.autocamper_project;
 
+import javafx.scene.control.DatePicker;
+
 import java.util.Date;
 
 public class Customer {
@@ -13,7 +15,20 @@ public class Customer {
     private String countryCode;
     private int amountRentals;
     private String license;
-    private Date licenseIssueDate;
+    private DatePicker licenseIssueDate;
+
+    public Customer(String phoneNumber, String fullName, String eMail, String street, String zipcode, String city, String countryCode, String license, DatePicker licenseIssueDate){
+        this.phoneNumber = phoneNumber;
+        this.fullName = fullName;
+        this.eMail = eMail;
+        this.street = street;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.countryCode = countryCode;
+        this.license = license;
+        this.licenseIssueDate = licenseIssueDate;
+
+    }
 
     public String getFullName() {
         return fullName;
@@ -95,11 +110,11 @@ public class Customer {
         this.license = license;
     }
 
-    public Date getLicenseIssueDate() {
+    public DatePicker getLicenseIssueDate() {
         return licenseIssueDate;
     }
 
-    public void setLicenseIssueDate(Date licenseIssueDate) {
+    public void setLicenseIssueDate(DatePicker licenseIssueDate) {
         this.licenseIssueDate = licenseIssueDate;
     }
 }

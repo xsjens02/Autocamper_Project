@@ -3,6 +3,9 @@ package com.example.autocamper_project;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.time.ZoneId;
+import java.util.Date;
+
 public class bookingPageController {
 
     @FXML
@@ -59,6 +62,8 @@ public class bookingPageController {
     }
     @FXML
     private void onCreateCustomerButtonClick(){
+
+        new Customer(phoneNum.getText(), fullName.getText(), email.getText(), adress.getText(), zipcode.getText(), city.getText(), country.getText(), driverLicenseNum.getText(), dateOfIssue);
 
     }
     @FXML
