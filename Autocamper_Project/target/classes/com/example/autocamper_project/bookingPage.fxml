@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="754.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autocamper_project.bookingPageController">
+   <children>
+      <TextField fx:id="orderNumber" maxWidth="100.0" promptText="Order number">
+         <VBox.margin>
+            <Insets left="15.0" top="10.0" />
+         </VBox.margin>
+      </TextField>
+      <HBox prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="customerID" prefHeight="25.0" prefWidth="80.0" promptText="customer ID">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin></TextField>
+            <TextField fx:id="phoneNum" prefWidth="100.0" promptText="phone number">
+               <HBox.margin>
+                  <Insets left="10.0" top="15.0" />
+               </HBox.margin></TextField>
+            <Button fx:id="loadCustomerData" mnemonicParsing="false" onAction="#onLoadCustomerDataButtonClick" text="Load customer data">
+               <HBox.margin>
+                  <Insets left="5.0" top="15.0" />
+               </HBox.margin></Button>
+            <TextField fx:id="employeeID" prefWidth="100.0" promptText="Employee ID">
+               <HBox.margin>
+                  <Insets left="155.0" top="15.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <Label fx:id="discountRate" text="Customer discount rate">
+         <VBox.margin>
+            <Insets bottom="10.0" left="15.0" top="10.0" />
+         </VBox.margin></Label>
+      <TextField fx:id="fullName" promptText="Full name">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" />
+         </VBox.margin></TextField>
+      <TextField fx:id="adress" promptText="Adress">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="5.0" />
+         </VBox.margin></TextField>
+      <TextField fx:id="zipcode" promptText="Zipcode">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="5.0" />
+         </VBox.margin></TextField>
+      <TextField fx:id="city" promptText="City">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="5.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="country" promptText="Country">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="5.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="email" promptText="Email">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="5.0" />
+         </VBox.margin></TextField>
+      <TextField fx:id="driverLicenseNum" promptText="Driver's license number">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="5.0" />
+         </VBox.margin>
+      </TextField>
+      <DatePicker fx:id="dateOfIssue" promptText="Date of issue">
+         <VBox.margin>
+            <Insets left="15.0" top="5.0" />
+         </VBox.margin>
+      </DatePicker>
+      <Button fx:id="createCustomer" mnemonicParsing="false" onAction="#onCreateCustomerButtonClick" text="Create customer">
+         <VBox.margin>
+            <Insets left="15.0" top="10.0" />
+         </VBox.margin></Button>
+      <TitledPane animated="false" prefHeight="102.0" prefWidth="600.0" text="List of drivers">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="listOfDrivers" layoutX="-1.0" layoutY="-3.0" prefHeight="80.0" prefWidth="600.0" />
+               </children>
+            </AnchorPane>
+        </content>
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="10.0" />
+         </VBox.margin>
+      </TitledPane>
+      <HBox prefHeight="33.0" prefWidth="600.0">
+         <children>
+            <DatePicker fx:id="startDate" promptText="Pick a start date">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin></DatePicker>
+            <DatePicker fx:id="endDate" promptText="Pick an end date">
+               <HBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </HBox.margin></DatePicker>
+         </children>
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" />
+         </VBox.margin></HBox>
+      <TitledPane animated="false" prefHeight="103.0" prefWidth="600.0" text="List of available autocampers">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="listOfAutocampers" layoutX="-1.0" layoutY="-2.0" prefHeight="82.0" prefWidth="600.0" />
+               </children>
+            </AnchorPane>
+        </content>
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="10.0" />
+         </VBox.margin>
+      </TitledPane>
+      <ComboBox fx:id="chooseInsurance" prefWidth="150.0" promptText="Choose insurance">
+         <VBox.margin>
+            <Insets bottom="10.0" left="15.0" top="10.0" />
+         </VBox.margin></ComboBox>
+      <Button fx:id="calculatePrice" mnemonicParsing="false" onAction="#onCalculatePriceButtonClick" text="Calculate total price">
+         <VBox.margin>
+            <Insets bottom="5.0" left="15.0" />
+         </VBox.margin></Button>
+      <Label fx:id="totalPrice" prefHeight="25.0" prefWidth="150.0" text="Total price">
+         <VBox.margin>
+            <Insets left="15.0" />
+         </VBox.margin></Label>
+      <HBox alignment="CENTER_RIGHT" prefHeight="87.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="confirmBooking" mnemonicParsing="false" onAction="#onConfirmBookingButtonClick" prefHeight="30.0" prefWidth="120.0" text="Confirm booking">
+               <HBox.margin>
+                  <Insets left="100.0" top="10.0" />
+               </HBox.margin></Button>
+            <Button fx:id="cancelBooking" mnemonicParsing="false" onAction="#onCancelBookingButtonClick" prefHeight="30.0" prefWidth="120.0" text="Cancel booking">
+               <HBox.margin>
+                  <Insets left="10.0" right="25.0" top="10.0" />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>
