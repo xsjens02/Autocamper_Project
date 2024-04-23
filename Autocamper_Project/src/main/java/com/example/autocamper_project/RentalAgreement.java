@@ -16,7 +16,7 @@ public class RentalAgreement {
     private double mileageIn;
     private int fuelOut;
     private int fuelIn;
-    private Insurance insurance;
+    private String insurance;
     private boolean isDamaged;
     private int discountRate;
 
@@ -116,11 +116,11 @@ public class RentalAgreement {
         this.fuelIn = fuelIn;
     }
 
-    public Insurance getInsurance() {
+    public String getInsurance() {
         return insurance;
     }
 
-    public void setInsurance(Insurance insurance) {
+    public void setInsurance(String insurance) {
         this.insurance = insurance;
     }
 

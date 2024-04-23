@@ -6,7 +6,7 @@ public class AutoCamper {
     private String autoCamperName;
     private double price;
     private String facilities;
-    private Category category;
+    private String category;
 
     public String getAutoCamperID() {
         return autoCamperID;
@@ -40,11 +40,11 @@ public class AutoCamper {
         this.facilities = facilities;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 }
