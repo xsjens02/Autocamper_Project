@@ -19,4 +19,124 @@ public class RentalAgreement {
     private Insurance insurance;
     private boolean isDamaged;
     private int discountRate;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Customer getRenter() {
+        return renter;
+    }
+
+    public void setRenter(Customer renter) {
+        this.renter = renter;
+    }
+
+    public String getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(String employeeID) {
+        this.employeeID = employeeID;
+    }
+
+    public String getRentalAgreementID() {
+        return rentalAgreementID;
+    }
+
+    public void setRentalAgreementID(String rentalAgreementID) {
+        this.rentalAgreementID = rentalAgreementID;
+    }
+
+    public List<Driver> getAdditionalDrivers() {
+        return additionalDrivers;
+    }
+
+    public void setAdditionalDrivers(List<Driver> additionalDrivers) {
+        this.additionalDrivers = additionalDrivers;
+    }
+
+    public AutoCamper getAutoCamper() {
+        return autoCamper;
+    }
+
+    public void setAutoCamper(AutoCamper autoCamper) {
+        this.autoCamper = autoCamper;
+    }
+
+    public double getMileageOut() {
+        return mileageOut;
+    }
+
+    public void setMileageOut(double mileageOut) {
+        this.mileageOut = mileageOut;
+    }
+
+    public double getMileageIn() {
+        return mileageIn;
+    }
+
+    public void setMileageIn(double mileageIn) {
+        this.mileageIn = mileageIn;
+    }
+
+    public int getFuelOut() {
+        return fuelOut;
+    }
+
+    public void setFuelOut(int fuelOut) {
+        this.fuelOut = fuelOut;
+    }
+
+    public int getFuelIn() {
+        return fuelIn;
+    }
+
+    public void setFuelIn(int fuelIn) {
+        this.fuelIn = fuelIn;
+    }
+
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+
+    public boolean isDamaged() {
+        return isDamaged;
+    }
+
+    public void setDamaged(boolean damaged) {
+        isDamaged = damaged;
+    }
+
+    public int getDiscountRate() {
+        return discountRate;
+    }
+
+    public void setDiscountRate(int discountRate) {
+        this.discountRate = discountRate;
+    }
 }
