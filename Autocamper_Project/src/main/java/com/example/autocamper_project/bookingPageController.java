@@ -9,35 +9,17 @@ import java.util.List;
 public class bookingPageController {
 
     @FXML
-    private TextField orderNumber;
-    @FXML
-    private TextField customerID;
-    @FXML
-    private TextField phoneNum;
+    private TextField orderNumber, customerID, phoneNumberID, employeeID;
     @FXML
     private Button loadCustomerData;
     @FXML
-    private TextField employeeID;
-    @FXML
     private Label discountRate;
     @FXML
-    private TextField fullName;
-    @FXML
-    private TextField adress;
-    @FXML
-    private TextField zipcode;
-    @FXML
-    private TextField city;
-    @FXML
-    private TextField country;
-    @FXML
-    private TextField email;
-    @FXML
-    private TextField driverLicenseNum;
-    @FXML
-    private DatePicker dateOfIssue;
+    private TextField fullName, address, zipcode, city, country, phoneNumber, email;
     @FXML
     private Button createCustomer;
+    @FXML
+    private DatePicker dateOfIssue;
     @FXML
     private ListView listOfDrivers;
     @FXML
@@ -62,8 +44,6 @@ public class bookingPageController {
     }
     @FXML
     private void onCreateCustomerButtonClick(){
-
-        new Customer(phoneNum.getText(), fullName.getText(), email.getText(), adress.getText(), zipcode.getText(), city.getText(), country.getText(), driverLicenseNum.getText(), dateOfIssue);
 
     }
     @FXML
