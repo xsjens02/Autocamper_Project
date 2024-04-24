@@ -15,7 +15,7 @@ public class dbConnection {
     private final String URL = "jdbc:sqlserver://localhost:" + PORT + ";databaseName=" + DATABASE_NAME;
     private final String ENCRYPT = "false";
 
-    public dbConnection() {
+    private dbConnection() {
         establishConnection();
     }
 
