@@ -14,7 +14,7 @@ public class CustomerDAO_impl implements DAO<Customer> {
     }
 
     @Override
-    public AutoCamper read(int id) {
+    public Customer read(int id) {
         return null;
     }
 

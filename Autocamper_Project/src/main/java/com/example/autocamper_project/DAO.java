@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface DAO<T> {
     public boolean add(T entity);
-    public AutoCamper read(int id);
+    public T read(int id);
 
     public List<T> readAll();
     public boolean remove(int id);

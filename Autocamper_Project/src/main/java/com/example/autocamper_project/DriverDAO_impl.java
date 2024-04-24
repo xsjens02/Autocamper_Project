@@ -9,13 +9,14 @@ public class DriverDAO_impl implements DAO<Driver> {
     public DriverDAO_impl() {
         connection = dbConnection.getInstance().getConnection();
     }
+
     @Override
     public boolean add(Driver entity) {
         return false;
     }
 
     @Override
-    public AutoCamper read(int id) {
+    public Driver read(int id) {
         return null;
     }
 

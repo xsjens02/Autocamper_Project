@@ -15,7 +15,7 @@ public class RentalAgreementDAO_impl implements DAO<RentalAgreement> {
     }
 
     @Override
-    public AutoCamper read(int id) {
+    public RentalAgreement read(int id) {
         return null;
     }
 
