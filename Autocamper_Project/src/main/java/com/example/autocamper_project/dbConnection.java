@@ -10,7 +10,7 @@ public class dbConnection {
     private Connection connection;
     private final String USERNAME = "sa";
     private final String PASSWORD = "1234";
-    private final String DATABASE_NAME = "dbName";
+    private final String DATABASE_NAME = "dbAutocamper";
     private final String PORT = "1433";
     private final String URL = "jdbc:sqlserver://localhost:" + PORT + ";databaseName=" + DATABASE_NAME;
     private final String ENCRYPT = "false";

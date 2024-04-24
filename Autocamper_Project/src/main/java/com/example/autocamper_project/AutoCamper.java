@@ -2,17 +2,28 @@ package com.example.autocamper_project;
 
 public class AutoCamper {
 
-    private String autoCamperID;
+    private int autoCamperID;
     private String autoCamperName;
     private double price;
     private String facilities;
-    private String category;
+    private int category;
 
-    public String getAutoCamperID() {
+    public AutoCamper(){};
+    public AutoCamper(int autoCamperID, String autoCamperName, String facilities, int category){
+        this.autoCamperID = autoCamperID;
+        this.autoCamperName = autoCamperName;
+        this.facilities = facilities;
+        this.category = category;
+    }
+    public String autoCamperString(AutoCamper a){
+        return "ID: "+a.getAutoCamperID()+" | Name: "+a.getAutoCamperName()+" | Facilities: "+a.getFacilities()+" | Category: "+a.getCategory();
+    }
+
+    public int getAutoCamperID() {
         return autoCamperID;
     }
 
-    public void setAutoCamperID(String autoCamperID) {
+    public void setAutoCamperID(int autoCamperID) {
         this.autoCamperID = autoCamperID;
     }
 
@@ -40,11 +51,11 @@ public class AutoCamper {
         this.facilities = facilities;
     }
 
-    public String getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 }

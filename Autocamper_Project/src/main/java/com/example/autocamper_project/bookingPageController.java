@@ -3,8 +3,8 @@ package com.example.autocamper_project;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.time.ZoneId;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bookingPageController {
 
@@ -72,13 +72,26 @@ public class bookingPageController {
     }
     @FXML
     private void onConfirmBookingButtonClick(){
-
+        loadListOfAutocampers();
     }
     @FXML
     private void onCancelBookingButtonClick(){
 
     }
 
+
+
+    public void loadListOfAutocampers(){
+
+        DAO dao = new AutoCamperDAO_impl();
+        List al = dao.readAll();
+        AutoCamper ac = new AutoCamper();
+        ArrayList<String> allAutocampers = new ArrayList();
+        for (int i = 0; i < al.size(); i++) {
+            allAutocampers.add(ac.autoCamperString((AutoCamper) al.get(i)));
+        }
+        listOfAutocampers.getItems().addAll(allAutocampers);
+    }
 
 
 }
