@@ -17,7 +17,7 @@
                <HBox.margin>
                   <Insets left="15.0" top="15.0" />
                </HBox.margin></TextField>
-            <TextField fx:id="phoneNum" prefWidth="100.0" promptText="phone number">
+            <TextField fx:id="phoneNumberID" prefWidth="100.0" promptText="phone number">
                <HBox.margin>
                   <Insets left="10.0" top="15.0" />
                </HBox.margin></TextField>
@@ -39,7 +39,7 @@
          <VBox.margin>
             <Insets left="15.0" right="15.0" />
          </VBox.margin></TextField>
-      <TextField fx:id="adress" promptText="Adress">
+      <TextField fx:id="address" promptText="Address">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin></TextField>
@@ -52,16 +52,16 @@
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin>
       </TextField>
-      <TextField fx:id="country" promptText="Country">
+      <TextField fx:id="country" promptText="Country Code">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin>
       </TextField>
-      <TextField fx:id="email" promptText="Email">
+      <TextField fx:id="phoneNumber" promptText="Phone Number">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin></TextField>
-      <TextField fx:id="driverLicenseNum" promptText="Driver's license number">
+      <TextField fx:id="email" promptText="Email">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin>
