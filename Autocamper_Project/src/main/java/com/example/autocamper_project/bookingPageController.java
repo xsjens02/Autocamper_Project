@@ -4,15 +4,18 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class bookingPageController {
+public class bookingPageController implements Initializable {
 
     private final CustomerDAO_impl customerDAO = new CustomerDAO_impl();
 
@@ -39,7 +42,7 @@ public class bookingPageController {
     @FXML
     private ListView listOfAutocampers;
     @FXML
-    private ComboBox chooseInsurance;
+    private ComboBox<String> chooseInsurance;
     @FXML
     private Button calculatePrice;
     @FXML
@@ -224,4 +227,8 @@ public class bookingPageController {
         return (categoryPrice*seasonPriceModifier)+insurancePrice;
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        chooseInsurance.getItems().addAll("No Insurance", "Basic Cover", "Super Cover Plus");
+    }
 }
