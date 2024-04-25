@@ -1,8 +1,16 @@
 package com.example.autocamper_project;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +46,13 @@ public class bookingPageController {
     private Button confirmBooking;
     @FXML
     private Button cancelBooking;
+
+    private DriverPageController driverPageController;
+
+    public void setDriverPageController(DriverPageController controller){
+        this.driverPageController = controller;
+    }
+
     @FXML
     private void onLoadCustomerDataButtonClick(){
 
@@ -48,7 +63,32 @@ public class bookingPageController {
     }
     @FXML
     private void onAddDriverButtonClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("addDriverPage.fxml"));
+            Parent root = loader.load();
+            Button button = new Button();
 
+
+            //Scene scene = new Scene(root);
+
+            Stage addDriverStage = new Stage();
+            addDriverStage.initModality(Modality.APPLICATION_MODAL);
+            addDriverStage.setTitle("Add Driver");
+            addDriverStage.setScene(new Scene(root));
+
+            addDriverStage.showAndWait();
+
+            //Stage stage = (Stage) addDriver.getScene().getWindow();
+
+            //setNewScene(stage, scene);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+    private void setNewScene(Stage stage, Scene scene){
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     private void onCalculatePriceButtonClick(){
@@ -75,6 +115,18 @@ public class bookingPageController {
             allAutocampers.add(ac.autoCamperString((AutoCamper) al.get(i)));
         }
         listOfAutocampers.getItems().addAll(allAutocampers);
+    }
+
+    private List<Driver> collectionOfDrivers = new ArrayList<>();
+    public void loadListOfDrivers(Driver newDriver){
+        listOfDrivers.getItems().clear();
+        collectionOfDrivers.add(newDriver);
+
+        listOfDrivers.getItems().addAll(collectionOfDrivers);
+
+
+
+
     }
 
 

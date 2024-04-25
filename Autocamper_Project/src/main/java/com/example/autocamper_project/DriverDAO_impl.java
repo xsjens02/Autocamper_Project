@@ -44,7 +44,7 @@ public class DriverDAO_impl implements DAO<Driver> {
                 String city = resultSet.getString("fldCity");
                 String zipcode = resultSet.getString("fldZipcode");
                 String countryCode = resultSet.getString("fldCountryCode");
-                return new Driver(id, name, licenseNumber, licenseIssueDate, street, city, zipcode, countryCode);
+                return new Driver(name, licenseNumber, licenseIssueDate, street, city, zipcode, countryCode);
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class DriverDAO_impl implements DAO<Driver> {
                 String city = resultSet.getString("fldCity");
                 String zipcode = resultSet.getString("fldZipcode");
                 String countryCode = resultSet.getString("fldCountryCode");
-                drivers.add(new Driver(driverID, name, licenseNumber, licenseIssueDate, street, city, zipcode, countryCode));
+                drivers.add(new Driver(name, licenseNumber, licenseIssueDate, street, city, zipcode, countryCode));
             }
 
         }catch (SQLException e){

@@ -11,7 +11,14 @@ public class Driver {
     private String zipcode;
     private String countryCode;
 
-    public Driver(int id, String name, String licenseNumber, java.sql.Date licenseIssueDate, String street, String city, String zipcode, String countryCode) {
+    public Driver(String name, String licenseNumber, java.sql.Date licenseIssueDate, String street, String city, String zipcode, String countryCode) {
+        this.fullName = name;
+        this.license = licenseNumber;
+        this.licenseIssueDate = licenseIssueDate;
+        this.street = street;
+        this.city = city;
+        this.zipcode = zipcode;
+        this.countryCode = countryCode;
     }
 
     public String getFullName() {
@@ -68,5 +75,10 @@ public class Driver {
 
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + fullName + ", License Number: " + license + ", Issue Date: " + licenseIssueDate + ", Street: " + street + ", City: " + city + ", Zipcode: " + zipcode + ", Country Code: " + countryCode;
     }
 }

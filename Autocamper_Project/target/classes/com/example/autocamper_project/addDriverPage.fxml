@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.autocamper_project.DriverPageController">
+   <children>
+       <TextField fx:id="tfFullName" promptText="Full name">
+           <VBox.margin>
+               <Insets left="15.0" right="15.0" top="15.0" />
+           </VBox.margin></TextField>
+       <TextField fx:id="tfStreet" promptText="Street">
+           <VBox.margin>
+               <Insets left="15.0" right="15.0" top="5.0" />
+           </VBox.margin></TextField>
+       <TextField fx:id="tfZipcode" promptText="Zipcode">
+           <VBox.margin>
+               <Insets left="15.0" right="15.0" top="5.0" />
+           </VBox.margin></TextField>
+       <TextField fx:id="tfCity" promptText="City">
+           <VBox.margin>
+               <Insets left="15.0" right="15.0" top="5.0" />
+           </VBox.margin>
+       </TextField>
+       <TextField fx:id="tfCountryCode" promptText="Country Code">
+           <VBox.margin>
+               <Insets left="15.0" right="15.0" top="5.0" />
+           </VBox.margin>
+       </TextField>
+      <TextField fx:id="tfLicenseNumber" promptText="License Number">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="5.0" />
+         </VBox.margin></TextField>
+      <DatePicker fx:id="dpIssueDate" promptText="License Issue Date">
+         <VBox.margin>
+            <Insets left="15.0" top="5.0" />
+         </VBox.margin>
+      </DatePicker>
+      <HBox alignment="BASELINE_LEFT" prefHeight="174.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="btnAddDriver" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#onAddDriverClick" text="Add Driver">
+               <HBox.margin>
+                  <Insets left="15.0" top="110.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>
