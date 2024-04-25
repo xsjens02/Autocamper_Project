@@ -12,7 +12,7 @@ public class RentalAgreementDAO_impl implements DAO<RentalAgreement> {
     @Override
     public boolean add(RentalAgreement entity) {
         try {
-            CallableStatement addRA = connection.prepareCall("{call add_customer(?, ?, ?, ?, ?, ?, ?, ?)}");
+            CallableStatement addRA = connection.prepareCall("{call create_rentalAgreement(?, ?, ?, ?, ?, ?, ?, ?)}");
             addRA.setInt(1, entity.getCustomer().getCustomerID());
             addRA.setInt(2, entity.getEmployeeID());
             addRA.setInt(3, entity.getAutoCamper().getAutoCamperID());
@@ -33,6 +33,26 @@ public class RentalAgreementDAO_impl implements DAO<RentalAgreement> {
     @Override
     public RentalAgreement read(int id) {
         return null;
+    }
+
+    public int getID(RentalAgreement rentalAgreement) {
+        try {
+            CallableStatement getID = connection.prepareCall("{? = call get_rental_id(?, ?, ?, ?, ?, ?, ?, ?)}");
+            getID.registerOutParameter(1, Types.INTEGER);
+            getID.setInt(2, rentalAgreement.getCustomer().getCustomerID());
+            getID.setInt(3, rentalAgreement.getEmployeeID());
+            getID.setInt(4, rentalAgreement.getAutoCamper().getAutoCamperID());
+            getID.setInt(5, rentalAgreement.getInsuranceID());
+            getID.setDouble(6, rentalAgreement.getPrice());
+            getID.setDate(7, rentalAgreement.getStartDate());
+            getID.setDate(8, rentalAgreement.getEndDate());
+            getID.setInt(9, rentalAgreement.getSeasonID());
+
+            getID.execute();
+            return getID.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

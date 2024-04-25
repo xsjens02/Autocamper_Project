@@ -28,22 +28,6 @@ public class RentalAgreement {
         this.seasonID = seasonID;
     }
 
-    public RentalAgreement(int rentalAgreementID, Customer customer, int employeeID, AutoCamper autoCamper, int insuranceID, double price, Date startDate, Date endDate, int mileageOut, int mileageIn, int fuelOut, int fuelIn, int seasonID) {
-        this.rentalAgreementID = rentalAgreementID;
-        this.customer = customer;
-        this.employeeID = employeeID;
-        this.autoCamper = autoCamper;
-        this.insuranceID = insuranceID;
-        this.price = price;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.mileageOut = mileageOut;
-        this.mileageIn = mileageIn;
-        this.fuelOut = fuelOut;
-        this.fuelIn = fuelIn;
-        this.seasonID = seasonID;
-    }
-
     public int getRentalAgreementID() {
         return rentalAgreementID;
     }

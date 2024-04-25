@@ -10,16 +10,16 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class bookingPageController implements Initializable {
 
     private final CustomerDAO_impl customerDAO = new CustomerDAO_impl();
+    private final RentalAgreementDAO_impl rentalDAO = new RentalAgreementDAO_impl();
 
-    private int discountRate;
+    private int discountRate = 0;
+
+    private Customer customer;
 
     @FXML
     private TextField orderNumber, customerID, employeeID;
@@ -51,15 +51,17 @@ public class bookingPageController implements Initializable {
     private Button confirmBooking;
     @FXML
     private Button cancelBooking;
+    private AutoCamper autoCamper;
     private int selectedAutocamperID;
     private int selectedAutocamperCategoryID;
-    private int seasonID = 1;
+    private int seasonID;
+    private int insuranceID;
     @FXML
     private void onLoadCustomerDataButtonClick(){
         resetTextFields();
         String searchID = customerID.getText();
         if (isInteger(searchID)) {
-            Customer customer = customerDAO.read(Integer.parseInt(searchID));
+            customer = customerDAO.read(Integer.parseInt(searchID));
             if (customer != null) {
                 fullName.setText(customer.getName());
                 address.setText(customer.getStreet());
@@ -95,7 +97,8 @@ public class bookingPageController implements Initializable {
     @FXML
     private void onCreateCustomerButtonClick(){
         if (customerID.getText().isEmpty()) {
-            if (fieldsNotEmpty()) {
+            ArrayList<TextField> textFields = new ArrayList<>(Arrays.asList(fullName, address, zipcode, city, country, phoneNumber, email));
+            if (fieldsNotEmpty(textFields)) {
                 String name = fullName.getText();
                 String mail = email.getText();
                 String phone = phoneNumber.getText();
@@ -106,15 +109,19 @@ public class bookingPageController implements Initializable {
                 Customer newCustomer = new Customer(name, mail, phone, street, town, zip, countryCode);
                 boolean customerAdded = customerDAO.add(newCustomer);
                 if (customerAdded) {
-                    customerID.setText(String.valueOf(customerDAO.getID(newCustomer)));
+                    int id = customerDAO.getID(newCustomer);
+                    customerID.setText(String.valueOf(id));
+                    customer = customerDAO.read(id);
+
+                    discountRate = calculateDiscount(customer.getAmountRentals());
+                    lblDiscountRate.setText("Discount rate: " + discountRate + "%");
                 }
             }
         }
     }
 
-    private boolean fieldsNotEmpty() {
+    private boolean fieldsNotEmpty(ArrayList<TextField> textFields) {
         boolean valid = true;
-        TextField[] textFields = {fullName, address, zipcode, city, country, phoneNumber, email};
         for (TextField textField : textFields) {
             if (textField.getText().isEmpty()) {
                 textField.setText("required");
@@ -148,6 +155,27 @@ public class bookingPageController implements Initializable {
     }
     @FXML
     private void onConfirmBookingButtonClick(){
+        ArrayList<TextField> textFields = new ArrayList<>(Arrays.asList(customerID, employeeID));
+        if (fieldsNotEmpty(textFields)) {
+            if (customer != null && autoCamper != null) {
+                try {
+                    int employee = Integer.parseInt(employeeID.getText());
+                    double price = calculateTotalPrice();
+                    Date start = java.sql.Date.valueOf(startDate.getValue());
+                    Date end = java.sql.Date.valueOf(endDate.getValue());
+
+                    RentalAgreement newRental = new RentalAgreement(customer, employee, autoCamper, insuranceID, price, start, end, seasonID);
+                    boolean rentalAdded = rentalDAO.add(newRental);
+                    if (rentalAdded) {
+                        int rentalID = rentalDAO.getID(newRental);
+                        orderNumber.setText(String.valueOf(rentalID));
+                    }
+                } catch (Exception e) {
+                    System.out.println("creating rental agreement failed");
+                }
+            }
+
+        }
     }
     @FXML
     private void onCancelBookingButtonClick(){
@@ -206,16 +234,20 @@ public class bookingPageController implements Initializable {
     public double calculateTotalPrice(){
 
         AutoCamperDAO_impl dao = new AutoCamperDAO_impl();
-        AutoCamper ac = dao.read(selectedAutocamperID);
+        autoCamper = dao.read(selectedAutocamperID);
 
         double insurancePrice = 0;
-        if(chooseInsurance.getSelectionModel().getSelectedIndex()==1){
+        if (chooseInsurance.getSelectionModel().getSelectedIndex() == 0) {
+            insuranceID = 1;
+        } else if (chooseInsurance.getSelectionModel().getSelectedIndex()==1){
             insurancePrice = 500;
+            insuranceID = 2;
         }
         else if(chooseInsurance.getSelectionModel().getSelectedIndex()==2){
             insurancePrice = 1000;
+            insuranceID = 3;
         }
-        double categoryPrice = dao.getCategoryPrice(ac.getCategory());
+        double categoryPrice = dao.getCategoryPrice(autoCamper.getCategory());
         int seasonPriceModifier = 0;
         if(seasonID==1){
             seasonPriceModifier = 2;
@@ -224,7 +256,11 @@ public class bookingPageController implements Initializable {
             seasonPriceModifier = 1;
         }
 
-        return (categoryPrice*seasonPriceModifier)+insurancePrice;
+        if (discountRate != 0) {
+            return ((categoryPrice*seasonPriceModifier)+insurancePrice) * (1 - (discountRate / 100.0));
+        } else {
+            return (categoryPrice*seasonPriceModifier)+insurancePrice;
+        }
     }
 
     @Override
