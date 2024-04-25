@@ -17,21 +17,17 @@
                <HBox.margin>
                   <Insets left="15.0" top="15.0" />
                </HBox.margin></TextField>
-            <TextField fx:id="phoneNumberID" prefWidth="100.0" promptText="phone number">
-               <HBox.margin>
-                  <Insets left="10.0" top="15.0" />
-               </HBox.margin></TextField>
             <Button fx:id="loadCustomerData" mnemonicParsing="false" onAction="#onLoadCustomerDataButtonClick" text="Load customer data">
                <HBox.margin>
                   <Insets left="5.0" top="15.0" />
                </HBox.margin></Button>
             <TextField fx:id="employeeID" prefWidth="100.0" promptText="Employee ID">
                <HBox.margin>
-                  <Insets left="155.0" top="15.0" />
+                  <Insets left="260.0" top="15.0" />
                </HBox.margin></TextField>
          </children>
       </HBox>
-      <Label fx:id="discountRate" text="Customer discount rate">
+      <Label fx:id="lblDiscountRate" text="Customer discount rate">
          <VBox.margin>
             <Insets bottom="10.0" left="15.0" top="10.0" />
          </VBox.margin></Label>
@@ -53,6 +49,11 @@
          </VBox.margin>
       </TextField>
       <TextField fx:id="country" promptText="Country Code">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="5.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="phoneNumber" promptText="Phone Number">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin>
