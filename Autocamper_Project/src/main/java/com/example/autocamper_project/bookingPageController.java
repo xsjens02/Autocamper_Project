@@ -1,9 +1,15 @@
 package com.example.autocamper_project;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class bookingPageController {
@@ -42,6 +48,9 @@ public class bookingPageController {
     private Button confirmBooking;
     @FXML
     private Button cancelBooking;
+    private int selectedAutocamperID;
+    private int selectedAutocamperCategoryID;
+    private int seasonID = 1;
     @FXML
     private void onLoadCustomerDataButtonClick(){
         resetTextFields();
@@ -132,7 +141,7 @@ public class bookingPageController {
     }
     @FXML
     private void onCalculatePriceButtonClick(){
-
+        totalPrice.setText("Total price: "+calculateTotalPrice());
     }
     @FXML
     private void onConfirmBookingButtonClick(){
@@ -141,9 +150,6 @@ public class bookingPageController {
     private void onCancelBookingButtonClick(){
 
     }
-
-
-
     public void loadListOfAutocampers(){
 
         listOfAutocampers.getItems().clear();
@@ -165,7 +171,27 @@ public class bookingPageController {
             allAutocampersAsStrings.add(ac.autoCamperString((AutoCamper) allAutocampers.get(i)));
         }
         listOfAutocampers.getItems().addAll(allAutocampersAsStrings);
+
+        listOfAutocampers.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
+            selectedAutocamperID = listOfAutocampers.getSelectionModel().getSelectedIndex() + 1;
+        });
+
     }
+
+    @FXML
+    public void checkSeason(){
+
+        LocalDate seasonStartDate = startDate.getValue();
+        if(seasonStartDate.getMonth().getValue()>=4 && seasonStartDate.getMonth().getValue()<10){
+            seasonID = 1;
+        }
+        else{
+            seasonID = 2;
+        }
+
+    }
+
+
 
     public List<Integer> findAllBookedAutocampers(){
 
@@ -174,5 +200,28 @@ public class bookingPageController {
         return allBookedAutocampersID = dao.readAllBookedAutocampers(startDate.getValue(),endDate.getValue());
     }
 
+    public double calculateTotalPrice(){
+
+        AutoCamperDAO_impl dao = new AutoCamperDAO_impl();
+        AutoCamper ac = dao.read(selectedAutocamperID);
+
+        double insurancePrice = 0;
+        if(chooseInsurance.getSelectionModel().getSelectedIndex()==1){
+            insurancePrice = 500;
+        }
+        else if(chooseInsurance.getSelectionModel().getSelectedIndex()==2){
+            insurancePrice = 1000;
+        }
+        double categoryPrice = dao.getCategoryPrice(ac.getCategory());
+        int seasonPriceModifier = 0;
+        if(seasonID==1){
+            seasonPriceModifier = 2;
+        }
+        else{
+            seasonPriceModifier = 1;
+        }
+
+        return (categoryPrice*seasonPriceModifier)+insurancePrice;
+    }
 
 }

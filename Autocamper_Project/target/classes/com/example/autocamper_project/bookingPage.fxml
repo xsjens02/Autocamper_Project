@@ -85,7 +85,7 @@
       </TitledPane>
       <HBox prefHeight="33.0" prefWidth="600.0">
          <children>
-            <DatePicker fx:id="startDate" promptText="Pick a start date">
+            <DatePicker fx:id="startDate" onAction="#checkSeason" promptText="Pick a start date">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin></DatePicker>

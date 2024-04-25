@@ -21,19 +21,21 @@ public class AutoCamperDAO_impl implements DAO<AutoCamper> {
 
     @Override
     public AutoCamper read(int id) {
+        AutoCamper ac = new AutoCamper();
         try {
             CallableStatement callableStatement = connection.prepareCall("EXEC dbo.findAutocamper @AutocamperID = "+id);
             callableStatement.execute();
             ResultSet rs = callableStatement.getResultSet();
             while(rs.next()){
-                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i = i +4) {
                     System.out.print(rs.getString(i) + "\t");
+                    ac = new AutoCamper(rs.getInt(i),rs.getString(i+1), rs.getString(i+2),rs.getInt(i+3));
                 }
             }
         } catch (SQLException e) {
             System.err.println("In read method, could not SELECT"+e.getMessage());
         }
-        return null;
+        return ac;
     }
 
     @Override
@@ -80,5 +82,23 @@ public class AutoCamperDAO_impl implements DAO<AutoCamper> {
             System.err.println("In readAllBookedAutocampers method, could not SELECT"+e.getMessage());
         }
         return allBookedAutocampersID;
+    }
+    public double getCategoryPrice(int categoryID){
+
+        double categoryPrice = 0;
+        try {
+            CallableStatement callableStatement = connection.prepareCall("EXEC getCategoryprice @categoryID="+categoryID+";");
+            callableStatement.executeQuery();
+            ResultSet rs = callableStatement.getResultSet();
+            while(rs.next()){
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++){
+                    categoryPrice = rs.getDouble(i);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("In getCategoryPrice method, could not SELECT"+e.getMessage());
+        }
+
+        return categoryPrice;
     }
 }
