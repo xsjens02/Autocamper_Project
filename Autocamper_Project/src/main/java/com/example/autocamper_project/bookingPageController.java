@@ -15,11 +15,11 @@ public class bookingPageController {
     @FXML
     private Label discountRate;
     @FXML
-    private TextField fullName, address, zipcode, city, country, phoneNumber, email;
+    private TextField fullName, address, zipcode, city, country, email;
     @FXML
     private Button createCustomer;
     @FXML
-    private DatePicker dateOfIssue;
+    private Button addDriver;
     @FXML
     private ListView listOfDrivers;
     @FXML
@@ -44,6 +44,10 @@ public class bookingPageController {
     }
     @FXML
     private void onCreateCustomerButtonClick(){
+
+    }
+    @FXML
+    private void onAddDriverButtonClick(){
 
     }
     @FXML

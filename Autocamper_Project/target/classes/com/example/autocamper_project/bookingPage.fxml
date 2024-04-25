@@ -17,7 +17,7 @@
                <HBox.margin>
                   <Insets left="15.0" top="15.0" />
                </HBox.margin></TextField>
-            <TextField fx:id="phoneNum" prefWidth="100.0" promptText="phone number">
+            <TextField fx:id="phoneNumberID" prefWidth="100.0" promptText="phone number">
                <HBox.margin>
                   <Insets left="10.0" top="15.0" />
                </HBox.margin></TextField>
@@ -39,7 +39,7 @@
          <VBox.margin>
             <Insets left="15.0" right="15.0" />
          </VBox.margin></TextField>
-      <TextField fx:id="adress" promptText="Adress">
+      <TextField fx:id="address" promptText="Address">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin></TextField>
@@ -52,7 +52,7 @@
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin>
       </TextField>
-      <TextField fx:id="country" promptText="Country">
+      <TextField fx:id="country" promptText="Country Code">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin>
@@ -61,20 +61,15 @@
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin></TextField>
-      <TextField fx:id="driverLicenseNum" promptText="Driver's license number">
-         <VBox.margin>
-            <Insets left="15.0" right="15.0" top="5.0" />
-         </VBox.margin>
-      </TextField>
-      <DatePicker fx:id="dateOfIssue" promptText="Date of issue">
-         <VBox.margin>
-            <Insets left="15.0" top="5.0" />
-         </VBox.margin>
-      </DatePicker>
       <Button fx:id="createCustomer" mnemonicParsing="false" onAction="#onCreateCustomerButtonClick" text="Create customer">
          <VBox.margin>
             <Insets left="15.0" top="10.0" />
          </VBox.margin></Button>
+      <Button fx:id="addDriver" mnemonicParsing="false" onAction="#onAddDriverButtonClick" text="Add driver">
+         <VBox.margin>
+            <Insets left="15.0" top="10.0" />
+         </VBox.margin>
+      </Button>
       <TitledPane animated="false" prefHeight="102.0" prefWidth="600.0" text="List of drivers">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
