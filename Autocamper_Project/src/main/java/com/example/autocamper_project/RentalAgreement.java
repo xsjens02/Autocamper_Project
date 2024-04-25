@@ -1,142 +1,126 @@
 package com.example.autocamper_project;
 
 import java.util.Date;
-import java.util.List;
 
 public class RentalAgreement {
+    private int rentalAgreementID;
+    private Customer customer;
+    private int employeeID;
+    private AutoCamper autoCamper;
+    private int insuranceID;
     private double price;
     private Date startDate;
     private Date endDate;
-    private Customer renter;
-    private String employeeID;
-    private String rentalAgreementID;
-    private List<Driver> additionalDrivers;
-    private AutoCamper autoCamper;
-    private double mileageOut;
-    private double mileageIn;
+    private int mileageOut;
+    private int mileageIn;
     private int fuelOut;
     private int fuelIn;
-    private String insurance;
-    private boolean isDamaged;
-    private int discountRate;
+    private int seasonID;
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public Customer getRenter() {
-        return renter;
-    }
-
-    public void setRenter(Customer renter) {
-        this.renter = renter;
-    }
-
-    public String getEmployeeID() {
-        return employeeID;
-    }
-
-    public void setEmployeeID(String employeeID) {
+    public RentalAgreement(Customer customer, int employeeID, AutoCamper autocamper, int insuranceID, double price, Date startDate, Date endDate, int seasonID) {
+        this.customer = customer;
         this.employeeID = employeeID;
+        this.autoCamper = autocamper;
+        this.insuranceID = insuranceID;
+        this.price = price;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.seasonID = seasonID;
     }
 
-    public String getRentalAgreementID() {
+    public RentalAgreement(int rentalAgreementID, Customer customer, int employeeID, AutoCamper autoCamper, int insuranceID, double price, Date startDate, Date endDate, int mileageOut, int mileageIn, int fuelOut, int fuelIn, int seasonID) {
+        this.rentalAgreementID = rentalAgreementID;
+        this.customer = customer;
+        this.employeeID = employeeID;
+        this.autoCamper = autoCamper;
+        this.insuranceID = insuranceID;
+        this.price = price;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.mileageOut = mileageOut;
+        this.mileageIn = mileageIn;
+        this.fuelOut = fuelOut;
+        this.fuelIn = fuelIn;
+        this.seasonID = seasonID;
+    }
+
+    public int getRentalAgreementID() {
         return rentalAgreementID;
     }
-
-    public void setRentalAgreementID(String rentalAgreementID) {
-        this.rentalAgreementID = rentalAgreementID;
+    public Customer getCustomer() {
+        return customer;
     }
-
-    public List<Driver> getAdditionalDrivers() {
-        return additionalDrivers;
+    public int getEmployeeID() {
+        return employeeID;
     }
-
-    public void setAdditionalDrivers(List<Driver> additionalDrivers) {
-        this.additionalDrivers = additionalDrivers;
-    }
-
     public AutoCamper getAutoCamper() {
         return autoCamper;
     }
-
-    public void setAutoCamper(AutoCamper autoCamper) {
-        this.autoCamper = autoCamper;
+    public int getInsuranceID() {
+        return insuranceID;
     }
-
-    public double getMileageOut() {
+    public double getPrice() {
+        return price;
+    }
+    public java.sql.Date getStartDate() {
+        return (java.sql.Date) startDate;
+    }
+    public java.sql.Date getEndDate() {
+        return (java.sql.Date) endDate;
+    }
+    public int getMileageOut() {
         return mileageOut;
     }
-
-    public void setMileageOut(double mileageOut) {
-        this.mileageOut = mileageOut;
-    }
-
-    public double getMileageIn() {
+    public int getMileageIn() {
         return mileageIn;
     }
-
-    public void setMileageIn(double mileageIn) {
-        this.mileageIn = mileageIn;
-    }
-
     public int getFuelOut() {
         return fuelOut;
     }
-
-    public void setFuelOut(int fuelOut) {
-        this.fuelOut = fuelOut;
-    }
-
     public int getFuelIn() {
         return fuelIn;
     }
+    public int getSeasonID() {
+        return seasonID;
+    }
 
+    public void setRentalAgreementID(int rentalAgreementID) {
+        this.rentalAgreementID = rentalAgreementID;
+    }
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
+    }
+    public void setAutoCamper(AutoCamper autoCamper) {
+        this.autoCamper = autoCamper;
+    }
+    public void setInsuranceID(int insuranceID) {
+        this.insuranceID = insuranceID;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+    public void setMileageOut(int mileageOut) {
+        this.mileageOut = mileageOut;
+    }
+    public void setMileageIn(int mileageIn) {
+        this.mileageIn = mileageIn;
+    }
+    public void setFuelOut(int fuelOut) {
+        this.fuelOut = fuelOut;
+    }
     public void setFuelIn(int fuelIn) {
         this.fuelIn = fuelIn;
     }
-
-    public String getInsurance() {
-        return insurance;
-    }
-
-    public void setInsurance(String insurance) {
-        this.insurance = insurance;
-    }
-
-    public boolean isDamaged() {
-        return isDamaged;
-    }
-
-    public void setDamaged(boolean damaged) {
-        isDamaged = damaged;
-    }
-
-    public int getDiscountRate() {
-        return discountRate;
-    }
-
-    public void setDiscountRate(int discountRate) {
-        this.discountRate = discountRate;
+    public void setSeasonID(int seasonID) {
+        this.seasonID = seasonID;
     }
 }
