@@ -56,7 +56,6 @@ public class bookingPageController {
     }
     @FXML
     private void onConfirmBookingButtonClick(){
-        loadListOfAutocampers();
     }
     @FXML
     private void onCancelBookingButtonClick(){
@@ -67,14 +66,32 @@ public class bookingPageController {
 
     public void loadListOfAutocampers(){
 
+        listOfAutocampers.getItems().clear();
         DAO dao = new AutoCamperDAO_impl();
-        List al = dao.readAll();
+        List allAutocampers = dao.readAll();
         AutoCamper ac = new AutoCamper();
-        ArrayList<String> allAutocampers = new ArrayList();
-        for (int i = 0; i < al.size(); i++) {
-            allAutocampers.add(ac.autoCamperString((AutoCamper) al.get(i)));
+        ArrayList<String> allAutocampersAsStrings = new ArrayList();
+        List<Integer> allBookedAutocampersID = findAllBookedAutocampers();
+        System.out.println(allBookedAutocampersID);
+
+
+        for (int i = 1; i <= allBookedAutocampersID.size(); i++) {
+            int ID = allBookedAutocampersID.get(i-1);
+            allAutocampers.remove(ID-i);
         }
-        listOfAutocampers.getItems().addAll(allAutocampers);
+
+
+        for (int i = 0; i < allAutocampers.size(); i++) {
+            allAutocampersAsStrings.add(ac.autoCamperString((AutoCamper) allAutocampers.get(i)));
+        }
+        listOfAutocampers.getItems().addAll(allAutocampersAsStrings);
+    }
+
+    public List<Integer> findAllBookedAutocampers(){
+
+        List allBookedAutocampersID = new ArrayList();
+        AutoCamperDAO_impl dao = new AutoCamperDAO_impl();
+        return allBookedAutocampersID = dao.readAllBookedAutocampers(startDate.getValue(),endDate.getValue());
     }
 
 

@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,5 +62,23 @@ public class AutoCamperDAO_impl implements DAO<AutoCamper> {
     @Override
     public boolean update(AutoCamper entity) {
         return false;
+    }
+
+    public List<Integer> readAllBookedAutocampers(LocalDate startDate, LocalDate endDate){
+
+        List<Integer> allBookedAutocampersID = new ArrayList<>();
+        try {
+            CallableStatement callableStatement = connection.prepareCall("EXEC showAllBookedAutocampersID @startDate='"+startDate+"', @endDate='"+endDate+"'");
+            callableStatement.executeQuery();
+            ResultSet rs = callableStatement.getResultSet();
+            while(rs.next()){
+                for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+                    allBookedAutocampersID.add(rs.getInt(i));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("In readAllBookedAutocampers method, could not SELECT"+e.getMessage());
+        }
+        return allBookedAutocampersID;
     }
 }
