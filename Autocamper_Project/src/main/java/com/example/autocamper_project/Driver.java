@@ -11,6 +11,9 @@ public class Driver {
     private String zipcode;
     private String countryCode;
 
+    public Driver(int id, String name, String licenseNumber, java.sql.Date licenseIssueDate, String street, String city, String zipcode, String countryCode) {
+    }
+
     public String getFullName() {
         return fullName;
     }
@@ -27,8 +30,8 @@ public class Driver {
         this.license = license;
     }
 
-    public Date getLicenseIssueDate() {
-        return licenseIssueDate;
+    public java.sql.Date getLicenseIssueDate() {
+        return (java.sql.Date) licenseIssueDate;
     }
 
     public void setLicenseIssueDate(Date licenseIssueDate) {
