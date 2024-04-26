@@ -19,6 +19,11 @@ public class AutoCamperDAO_impl implements DAO<AutoCamper> {
         return false;
     }
 
+    /**
+     * Method that takes an integer parameter to find a specific Autocamper in the database.
+     * @param id an integer that is used to find the matching AutocamperID in the database
+     * @return The method returns the autocamper from the database with the corresponding AutocamperID to the int parameter
+     */
     @Override
     public AutoCamper read(int id) {
         AutoCamper ac = new AutoCamper();
@@ -38,6 +43,10 @@ public class AutoCamperDAO_impl implements DAO<AutoCamper> {
         return ac;
     }
 
+    /**
+     * This method uses a stored procedure in the database to select all autocampers from the tblAutocampers.
+     * @return A List of Autocamper objects are returned.
+     */
     @Override
     public List<AutoCamper> readAll() {
         List<AutoCamper> allAutocampers = new ArrayList<>();
@@ -66,6 +75,12 @@ public class AutoCamperDAO_impl implements DAO<AutoCamper> {
         return false;
     }
 
+    /**
+     * Based on two parameters 'startDate' and 'endDate' this method finds all autocamperIDs that are booked within the period.
+     * @param startDate is the selected startDate in the DatePicker
+     * @param endDate is the selected endDate in the DatePicker
+     * @returns a list of integers that represents the autocamperIDs of all the booked autocampers.
+     */
     public List<Integer> readAllBookedAutocampers(LocalDate startDate, LocalDate endDate){
 
         List<Integer> allBookedAutocampersID = new ArrayList<>();
@@ -83,6 +98,13 @@ public class AutoCamperDAO_impl implements DAO<AutoCamper> {
         }
         return allBookedAutocampersID;
     }
+
+    /**
+     * In order to associate a specific autocamper with a certain price, each autocamper has a categoryID and
+     * each category has a price. Here the methods finds the price corresponding to the categoryID on the autocamper.
+     * @param categoryID an int to match with the categoryID in the database.
+     * @returns the price of the selected category.
+     */
     public double getCategoryPrice(int categoryID){
 
         double categoryPrice = 0;
