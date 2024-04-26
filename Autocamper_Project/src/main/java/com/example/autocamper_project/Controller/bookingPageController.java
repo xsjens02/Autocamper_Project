@@ -1,17 +1,19 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Controller;
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.example.autocamper_project.Model.AutoCamper;
+import com.example.autocamper_project.Model.Customer;
+import com.example.autocamper_project.Model.Driver;
+import com.example.autocamper_project.Model.RentalAgreement;
+import com.example.autocamper_project.Persistence.AutoCamperDAO_impl;
+import com.example.autocamper_project.Persistence.CustomerDAO_impl;
+import com.example.autocamper_project.Persistence.DAO;
+import com.example.autocamper_project.Persistence.RentalAgreementDAO_impl;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.*;
@@ -25,7 +27,6 @@ import java.util.List;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.*;
 
 
@@ -208,7 +209,7 @@ public class bookingPageController implements Initializable {
     @FXML
     private void onAddDriverButtonClick(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("addDriverPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/autocamper_project/addDriverPage.fxml"));
             Parent root = loader.load();
 
             Stage addDriverStage = new Stage();

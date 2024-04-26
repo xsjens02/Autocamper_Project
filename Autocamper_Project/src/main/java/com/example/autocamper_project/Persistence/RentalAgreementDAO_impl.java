@@ -1,4 +1,8 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Persistence;
+
+import com.example.autocamper_project.Model.RentalAgreement;
+import com.example.autocamper_project.Persistence.DAO;
+import com.example.autocamper_project.Persistence.dbConnection;
 
 import java.sql.*;
 import java.util.List;

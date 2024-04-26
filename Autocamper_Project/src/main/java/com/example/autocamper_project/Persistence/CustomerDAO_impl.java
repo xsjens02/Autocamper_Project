@@ -1,4 +1,6 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Persistence;
+
+import com.example.autocamper_project.Model.Customer;
 
 import java.sql.*;
 import java.util.List;

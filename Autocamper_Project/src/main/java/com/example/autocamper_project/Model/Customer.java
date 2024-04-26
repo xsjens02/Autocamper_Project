@@ -1,4 +1,4 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Model;
 
 import javafx.scene.control.DatePicker;
 

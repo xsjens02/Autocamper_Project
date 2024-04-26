@@ -1,4 +1,6 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Persistence;
+
+import com.example.autocamper_project.Model.AutoCamper;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;

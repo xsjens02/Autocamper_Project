@@ -1,4 +1,7 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Model;
+
+import com.example.autocamper_project.Model.AutoCamper;
+import com.example.autocamper_project.Model.Customer;
 
 import java.util.Date;
 

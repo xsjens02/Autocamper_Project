@@ -1,16 +1,16 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Controller;
 
+import com.example.autocamper_project.Controller.bookingPageController;
+import com.example.autocamper_project.Model.Driver;
+import com.example.autocamper_project.Persistence.DriverDAO_impl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -92,7 +92,7 @@ public class DriverPageController {
             newlyAddedDriver.add(newDriver);
 
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("bookingPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/autocamper_project/bookingPage.fxml"));
 
             bookingPageController bookingController = new bookingPageController();
             Stage stage = (Stage) btnAddDriver.getScene().getWindow();

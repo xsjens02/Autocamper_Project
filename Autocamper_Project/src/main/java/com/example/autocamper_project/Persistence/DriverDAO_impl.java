@@ -1,11 +1,14 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Persistence;
 
-import javax.xml.transform.Result;
+import com.example.autocamper_project.Model.Driver;
+import com.example.autocamper_project.Persistence.DAO;
+import com.example.autocamper_project.Persistence.dbConnection;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DriverDAO_impl implements DAO<Driver> {
+public class DriverDAO_impl implements DAO<com.example.autocamper_project.Model.Driver> {
     private final Connection connection;
 
     /**
@@ -21,7 +24,7 @@ public class DriverDAO_impl implements DAO<Driver> {
      * @return
      */
     @Override
-    public boolean add(Driver entity) {
+    public boolean add(com.example.autocamper_project.Model.Driver entity) {
         try(CallableStatement statement = connection.prepareCall("{CALL dbo.addDriver(?,?,?,?,?,?,?)}")){
             statement.setString(1,entity.getFullName());
             statement.setString(2,entity.getLicense());
@@ -45,7 +48,7 @@ public class DriverDAO_impl implements DAO<Driver> {
      * @return
      */
     @Override
-    public Driver read(int id) {
+    public com.example.autocamper_project.Model.Driver read(int id) {
         try(CallableStatement statement = connection.prepareCall("{CALL dbo.readDriver(?)}")){
             statement.setInt(1,id);
             ResultSet resultSet = statement.executeQuery();
@@ -57,7 +60,7 @@ public class DriverDAO_impl implements DAO<Driver> {
                 String city = resultSet.getString("fldCity");
                 String zipcode = resultSet.getString("fldZipcode");
                 String countryCode = resultSet.getString("fldCountryCode");
-                return new Driver(name, licenseNumber, licenseIssueDate, street, city, zipcode, countryCode);
+                return new com.example.autocamper_project.Model.Driver(name, licenseNumber, licenseIssueDate, street, city, zipcode, countryCode);
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -70,8 +73,8 @@ public class DriverDAO_impl implements DAO<Driver> {
      * @return
      */
     @Override
-    public List<Driver> readAll() {
-        List<Driver> drivers = new ArrayList<>();
+    public List<com.example.autocamper_project.Model.Driver> readAll() {
+        List<com.example.autocamper_project.Model.Driver> drivers = new ArrayList<>();
         try(CallableStatement statement = connection.prepareCall("{CALL dbo.readAllDrivers()}")){
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
@@ -83,7 +86,7 @@ public class DriverDAO_impl implements DAO<Driver> {
                 String city = resultSet.getString("fldCity");
                 String zipcode = resultSet.getString("fldZipcode");
                 String countryCode = resultSet.getString("fldCountryCode");
-                drivers.add(new Driver(name, licenseNumber, licenseIssueDate, street, city, zipcode, countryCode));
+                drivers.add(new com.example.autocamper_project.Model.Driver(name, licenseNumber, licenseIssueDate, street, city, zipcode, countryCode));
             }
 
         }catch (SQLException e){

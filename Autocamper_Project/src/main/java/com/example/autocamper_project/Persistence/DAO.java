@@ -1,4 +1,4 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Persistence;
 
 import java.util.List;
 

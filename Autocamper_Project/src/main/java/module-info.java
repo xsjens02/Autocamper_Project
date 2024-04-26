@@ -8,4 +8,10 @@ module com.example.autocamper_project {
 
     opens com.example.autocamper_project to javafx.fxml;
     exports com.example.autocamper_project;
+    exports com.example.autocamper_project.Model;
+    opens com.example.autocamper_project.Model to javafx.fxml;
+    exports com.example.autocamper_project.Persistence;
+    opens com.example.autocamper_project.Persistence to javafx.fxml;
+    exports com.example.autocamper_project.Controller;
+    opens com.example.autocamper_project.Controller to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

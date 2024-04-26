@@ -1,4 +1,4 @@
-package com.example.autocamper_project;
+package com.example.autocamper_project.Model;
 
 public class AutoCamper {
 
