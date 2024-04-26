@@ -9,6 +9,12 @@ public class RentalAgreementDAO_impl implements DAO<RentalAgreement> {
     public RentalAgreementDAO_impl() {
         connection = dbConnection.getInstance().getConnection();
     }
+
+    /**
+     * method for adding a new rental agreement to database
+     * @param entity rental agreement object to add in database
+     * @return true if added, false if not added
+     */
     @Override
     public boolean add(RentalAgreement entity) {
         try {
@@ -35,6 +41,11 @@ public class RentalAgreementDAO_impl implements DAO<RentalAgreement> {
         return null;
     }
 
+    /**
+     * method for getting id for a rental agreement in database
+     * @param rentalAgreement to get id for
+     * @return id of rental agreement
+     */
     public int getID(RentalAgreement rentalAgreement) {
         try {
             CallableStatement getID = connection.prepareCall("{? = call get_rental_id(?, ?, ?, ?, ?, ?, ?, ?)}");

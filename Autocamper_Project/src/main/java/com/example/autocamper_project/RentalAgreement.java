@@ -17,6 +17,17 @@ public class RentalAgreement {
     private int fuelIn;
     private int seasonID;
 
+    /**
+     * Constructor of rental agreement object
+     * @param customer object
+     * @param employeeID of employee record in database
+     * @param autocamper object
+     * @param insuranceID of insurance record in database
+     * @param price of rental
+     * @param startDate of rental
+     * @param endDate of rental
+     * @param seasonID of season record in database
+     */
     public RentalAgreement(Customer customer, int employeeID, AutoCamper autocamper, int insuranceID, double price, Date startDate, Date endDate, int seasonID) {
         this.customer = customer;
         this.employeeID = employeeID;

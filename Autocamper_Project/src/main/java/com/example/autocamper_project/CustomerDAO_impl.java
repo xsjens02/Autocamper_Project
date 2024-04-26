@@ -8,6 +8,12 @@ public class CustomerDAO_impl implements DAO<Customer> {
     public CustomerDAO_impl() {
         connection = dbConnection.getInstance().getConnection();
     }
+
+    /**
+     * method for adding a new customer to database
+     * @param entity customer object to add
+     * @return true if added, false if not added
+     */
     @Override
     public boolean add(Customer entity) {
         try {
@@ -27,6 +33,11 @@ public class CustomerDAO_impl implements DAO<Customer> {
         }
     }
 
+    /**
+     * method for getting a customer object from database based on id
+     * @param id to search for specific customer
+     * @return if id is present then new customer object else null
+     */
     @Override
     public Customer read(int id) {
         PreparedStatement readCustomer;
@@ -51,6 +62,11 @@ public class CustomerDAO_impl implements DAO<Customer> {
         return null;
     }
 
+    /**
+     * method for getting an id of a customer object from database
+     * @param customer object to search for id
+     * @return id of customer object
+     */
     public int getID(Customer customer) {
         try {
             CallableStatement getID = connection.prepareCall("{? = call get_customer_id(?, ?, ?, ?, ?, ?, ?)}");

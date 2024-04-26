@@ -15,6 +15,16 @@ public class Customer {
     private String countryCode;
     private int amountRentals;
 
+    /**
+     * Constructor for a customer object
+     * @param name of customer
+     * @param eMail of customer
+     * @param phoneNumber of customer
+     * @param street of customer
+     * @param city of customer
+     * @param zipcode of customer
+     * @param countryCode of customer
+     */
     public Customer(String name, String eMail, String phoneNumber, String street, String city, String zipcode, String countryCode) {
         this.name = name;
         this.eMail = eMail;
@@ -25,6 +35,18 @@ public class Customer {
         this.countryCode = countryCode;
     }
 
+    /**
+     * Constructor of customer object
+     * @param customerID of customer record in database
+     * @param name of customer
+     * @param eMail of customer
+     * @param phoneNumber of customer
+     * @param street of customer
+     * @param city of customer
+     * @param zipcode of customer
+     * @param countryCode of customer
+     * @param amountRentals of customer
+     */
     public Customer(int customerID, String name, String eMail, String phoneNumber, String street, String city, String zipcode, String countryCode, int amountRentals) {
         this.customerID = customerID;
         this.name = name;
