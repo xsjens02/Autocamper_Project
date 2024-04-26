@@ -81,6 +81,8 @@ public class bookingPageController implements Initializable {
     private int seasonID;
     private int insuranceID;
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         chooseInsurance.getItems().addAll("No Insurance", "Basic Cover", "Super Cover Plus");
@@ -116,7 +118,7 @@ public class bookingPageController implements Initializable {
      * @param str to check for parse
      * @return true if string can be parsed to integer, false if not
      */
-    private boolean isInteger(String str) {
+    public boolean isInteger(String str) {
         try {
             Integer.parseInt(str);
             return true;
@@ -130,7 +132,7 @@ public class bookingPageController implements Initializable {
      * @param amountOfRentals number of rentals
      * @return discount rate in integer based on amount of rentals
      */
-    private int calculateDiscount(int amountOfRentals) {
+    public int calculateDiscount(int amountOfRentals) {
         if (amountOfRentals > 2 && amountOfRentals < 6) {
             return 5;
         } else if (amountOfRentals > 5) {
