@@ -80,6 +80,15 @@ public class bookingPageController implements Initializable {
     private int seasonID;
     private int insuranceID;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        chooseInsurance.getItems().addAll("No Insurance", "Basic Cover", "Super Cover Plus");
+    }
+
+    /**
+     * handler for 'load customer' button, will display customer information in program
+     * if customer id has a record in database
+     */
     @FXML
     private void onLoadCustomerDataButtonClick(){
         resetTextFields();
@@ -101,6 +110,11 @@ public class bookingPageController implements Initializable {
         }
     }
 
+    /**
+     * method for checking if a string can be parsed to an integer
+     * @param str to check for parse
+     * @return true if string can be parsed to integer, false if not
+     */
     private boolean isInteger(String str) {
         try {
             Integer.parseInt(str);
@@ -110,6 +124,11 @@ public class bookingPageController implements Initializable {
         }
     }
 
+    /**
+     * method for calculating discount based on amount of rentals
+     * @param amountOfRentals number of rentals
+     * @return discount rate in integer based on amount of rentals
+     */
     private int calculateDiscount(int amountOfRentals) {
         if (amountOfRentals > 2 && amountOfRentals < 6) {
             return 5;
@@ -118,6 +137,11 @@ public class bookingPageController implements Initializable {
         }
         return 0;
     }
+
+    /**
+     * handler for 'create customer' button, will create a new customer in database
+     * if all relevant text fields for customer has been filled
+     */
     @FXML
     private void onCreateCustomerButtonClick(){
         if (customerID.getText().isEmpty()) {
@@ -144,6 +168,11 @@ public class bookingPageController implements Initializable {
         }
     }
 
+    /**
+     * method for checking if a list of text fields is empty
+     * @param textFields to check
+     * @return true if all is filled, false if one or some is empty
+     */
     private boolean fieldsNotEmpty(ArrayList<TextField> textFields) {
         boolean valid = true;
         for (TextField textField : textFields) {
@@ -162,6 +191,9 @@ public class bookingPageController implements Initializable {
         return valid;
     }
 
+    /**
+     * method for resetting customer text fields
+     */
     private void resetTextFields() {
         TextField[] textFields = {fullName, address, zipcode, city, country, phoneNumber, email};
         for (TextField textField : textFields) {
@@ -347,10 +379,5 @@ public class bookingPageController implements Initializable {
         } else {
             return (categoryPrice*seasonPriceModifier)+insurancePrice;
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        chooseInsurance.getItems().addAll("No Insurance", "Basic Cover", "Super Cover Plus");
     }
 }
