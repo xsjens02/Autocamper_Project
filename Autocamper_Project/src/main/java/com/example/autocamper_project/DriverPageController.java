@@ -93,7 +93,6 @@ public class DriverPageController {
 
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("bookingPage.fxml"));
-            //Parent root = loader.load();
 
             bookingPageController bookingController = new bookingPageController();
             Stage stage = (Stage) btnAddDriver.getScene().getWindow();
@@ -103,17 +102,7 @@ public class DriverPageController {
 
             bookingController.loadListOfDrivers(newDriver);
 
-            //Scene scene = new Scene(root);
-            //Stage stage = (Stage) btnAddDriver.getScene().getWindow();
-            //stage.close();
 
-
-            //stage.setScene(scene);
-            //stage.show();
-
-
-            //bookingController.loadListOfDrivers(newDriver);
-            //openBookingPage();
 
         }else {
             System.out.println("Failed to add driver");
@@ -121,21 +110,5 @@ public class DriverPageController {
 
     }
 
-    private void openBookingPage(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("bookingPage.fxml"));
-            Parent root = loader.load();
-
-
-
-            Scene scene = new Scene(root);
-
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
 
 }

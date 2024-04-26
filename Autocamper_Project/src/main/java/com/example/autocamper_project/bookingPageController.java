@@ -210,10 +210,6 @@ public class bookingPageController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("addDriverPage.fxml"));
             Parent root = loader.load();
-            Button button = new Button();
-
-
-            //Scene scene = new Scene(root);
 
             Stage addDriverStage = new Stage();
             addDriverStage.initModality(Modality.APPLICATION_MODAL);
@@ -222,18 +218,12 @@ public class bookingPageController implements Initializable {
 
             addDriverStage.showAndWait();
 
-            //Stage stage = (Stage) addDriver.getScene().getWindow();
-
-            //setNewScene(stage, scene);
         }catch (IOException e){
             e.printStackTrace();
         }
 
     }
-    private void setNewScene(Stage stage, Scene scene){
-        stage.setScene(scene);
-        stage.show();
-    }
+
     @FXML
     private void onCalculatePriceButtonClick(){
         totalPrice.setText("Total price: "+calculateTotalPrice());
