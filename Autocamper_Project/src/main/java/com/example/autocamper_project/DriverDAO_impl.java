@@ -8,10 +8,18 @@ import java.util.List;
 public class DriverDAO_impl implements DAO<Driver> {
     private final Connection connection;
 
+    /**
+     * Method to establish a connection to the database
+     */
     public DriverDAO_impl() {
         connection = dbConnection.getInstance().getConnection();
     }
 
+    /**
+     * Method for adding a driver to the database
+     * @param entity
+     * @return
+     */
     @Override
     public boolean add(Driver entity) {
         try(CallableStatement statement = connection.prepareCall("{CALL dbo.addDriver(?,?,?,?,?,?,?)}")){
@@ -31,6 +39,11 @@ public class DriverDAO_impl implements DAO<Driver> {
 
     }
 
+    /**
+     * Method for reading a single driver in database
+     * @param id
+     * @return
+     */
     @Override
     public Driver read(int id) {
         try(CallableStatement statement = connection.prepareCall("{CALL dbo.readDriver(?)}")){
@@ -52,6 +65,10 @@ public class DriverDAO_impl implements DAO<Driver> {
         return null;
     }
 
+    /**
+     * Method for reading all drivers in database
+     * @return
+     */
     @Override
     public List<Driver> readAll() {
         List<Driver> drivers = new ArrayList<>();
@@ -75,6 +92,11 @@ public class DriverDAO_impl implements DAO<Driver> {
         return drivers;
     }
 
+    /**
+     * Method for removing a driver in database
+     * @param id
+     * @return
+     */
     @Override
     public boolean remove(int id) {
         try(CallableStatement statement = connection.prepareCall("{CALL dbo.deleteDriver(?)}")){
@@ -87,6 +109,11 @@ public class DriverDAO_impl implements DAO<Driver> {
         }
     }
 
+    /**
+     * Method for updating a driver in the database
+     * @param entity
+     * @return
+     */
     @Override
     public boolean update(Driver entity) {
         try(CallableStatement statement = connection.prepareCall("{CALL dbo.updateDriver(?, ?, ?, ?, ?, ?, ?)}")){

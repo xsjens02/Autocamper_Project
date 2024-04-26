@@ -172,6 +172,10 @@ public class bookingPageController implements Initializable {
             textField.clear();
         }
     }
+
+    /**
+     * Method that goes to a new scene called addDriverPage, where you can add a driver
+     */
     @FXML
     private void onAddDriverButtonClick(){
         try {
@@ -274,6 +278,11 @@ public class bookingPageController implements Initializable {
 
     }
 
+    /**
+     * Method that should be able to get that information from the DriverPageController and display it in
+     * the listview.
+     * WIP.
+     */
     private List<Driver> collectionOfDrivers = new ArrayList<>();
     public void loadListOfDrivers(Driver newDriver){
         listOfDrivers.getItems().clear();

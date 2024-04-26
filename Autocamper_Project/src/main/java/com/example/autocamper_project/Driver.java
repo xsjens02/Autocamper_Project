@@ -11,6 +11,16 @@ public class Driver {
     private String zipcode;
     private String countryCode;
 
+    /**
+     * Constructor for the Driver
+     * @param name
+     * @param licenseNumber
+     * @param licenseIssueDate
+     * @param street
+     * @param city
+     * @param zipcode
+     * @param countryCode
+     */
     public Driver(String name, String licenseNumber, java.sql.Date licenseIssueDate, String street, String city, String zipcode, String countryCode) {
         this.fullName = name;
         this.license = licenseNumber;
@@ -25,56 +35,32 @@ public class Driver {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public String getLicense() {
         return license;
     }
 
-    public void setLicense(String license) {
-        this.license = license;
-    }
 
     public java.sql.Date getLicenseIssueDate() {
         return (java.sql.Date) licenseIssueDate;
     }
 
-    public void setLicenseIssueDate(Date licenseIssueDate) {
-        this.licenseIssueDate = licenseIssueDate;
-    }
 
     public String getStreet() {
         return street;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
 
     public String getCity() {
         return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
 
     public String getCountryCode() {
         return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
     }
 
     @Override

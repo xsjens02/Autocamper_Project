@@ -53,6 +53,11 @@ public class DriverPageController {
         this.bookingPage = bookingPage;
     }
 
+    /**
+     * Method that executes when clicking on the Add Driver button, that gets the information from the text fields
+     * and sends that information to the database
+     * @param actionEvent
+     */
     public void onAddDriverClick(ActionEvent actionEvent) {
         String name = tfFullName.getText();
         String street = tfStreet.getText();
