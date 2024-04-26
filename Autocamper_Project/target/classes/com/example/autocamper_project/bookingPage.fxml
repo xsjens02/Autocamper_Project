@@ -17,21 +17,17 @@
                <HBox.margin>
                   <Insets left="15.0" top="15.0" />
                </HBox.margin></TextField>
-            <TextField fx:id="phoneNumberID" prefWidth="100.0" promptText="phone number">
-               <HBox.margin>
-                  <Insets left="10.0" top="15.0" />
-               </HBox.margin></TextField>
             <Button fx:id="loadCustomerData" mnemonicParsing="false" onAction="#onLoadCustomerDataButtonClick" text="Load customer data">
                <HBox.margin>
                   <Insets left="5.0" top="15.0" />
                </HBox.margin></Button>
             <TextField fx:id="employeeID" prefWidth="100.0" promptText="Employee ID">
                <HBox.margin>
-                  <Insets left="155.0" top="15.0" />
+                  <Insets left="260.0" top="15.0" />
                </HBox.margin></TextField>
          </children>
       </HBox>
-      <Label fx:id="discountRate" text="Customer discount rate">
+      <Label fx:id="lblDiscountRate" text="Customer discount rate">
          <VBox.margin>
             <Insets bottom="10.0" left="15.0" top="10.0" />
          </VBox.margin></Label>
@@ -53,6 +49,11 @@
          </VBox.margin>
       </TextField>
       <TextField fx:id="country" promptText="Country Code">
+         <VBox.margin>
+            <Insets left="15.0" right="15.0" top="5.0" />
+         </VBox.margin>
+      </TextField>
+      <TextField fx:id="phoneNumber" promptText="Phone Number">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="5.0" />
          </VBox.margin>
@@ -84,11 +85,11 @@
       </TitledPane>
       <HBox prefHeight="33.0" prefWidth="600.0">
          <children>
-            <DatePicker fx:id="startDate" promptText="Pick a start date">
+            <DatePicker fx:id="startDate" onAction="#checkSeason" promptText="Pick a start date">
                <HBox.margin>
                   <Insets top="10.0" />
                </HBox.margin></DatePicker>
-            <DatePicker fx:id="endDate" promptText="Pick an end date">
+            <DatePicker fx:id="endDate" onAction="#loadListOfAutocampers" promptText="Pick an end date">
                <HBox.margin>
                   <Insets left="15.0" top="10.0" />
                </HBox.margin></DatePicker>
@@ -100,7 +101,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ListView fx:id="listOfAutocampers" layoutX="-1.0" layoutY="-2.0" prefHeight="82.0" prefWidth="600.0" />
+                  <ListView fx:id="listOfAutocampers" layoutX="-1.0" layoutY="-2.0" prefHeight="61.0" prefWidth="600.0" />
                </children>
             </AnchorPane>
         </content>

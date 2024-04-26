@@ -51,6 +51,25 @@ public class CustomerDAO_impl implements DAO<Customer> {
         return null;
     }
 
+    public int getID(Customer customer) {
+        try {
+            CallableStatement getID = connection.prepareCall("{? = call get_customer_id(?, ?, ?, ?, ?, ?, ?)}");
+            getID.registerOutParameter(1, Types.INTEGER);
+            getID.setString(2, customer.getName());
+            getID.setString(3, customer.getEmail());
+            getID.setString(4, customer.getPhoneNumber());
+            getID.setString(5, customer.getStreet());
+            getID.setString(6, customer.getCity());
+            getID.setString(7, customer.getZipcode());
+            getID.setString(8, customer.getCountryCode());
+
+            getID.execute();
+            return getID.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public List<Customer> readAll() {
         return null;
