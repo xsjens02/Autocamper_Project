@@ -75,11 +75,8 @@ public class bookingPageController implements Initializable {
     public void setDriverPageController(DriverPageController controller){
         this.driverPageController = controller;
     }
-
-
     private AutoCamper autoCamper;
     private int selectedAutocamperID;
-    private int selectedAutocamperCategoryID;
     private int seasonID;
     private int insuranceID;
 
@@ -233,6 +230,11 @@ public class bookingPageController implements Initializable {
     private void onCancelBookingButtonClick(){
 
     }
+
+    /**
+     * When selecting a startDate and endDate in the DatePickers this method is called to show all
+     * the available autocampers within the selected period.
+     */
     public void loadListOfAutocampers(){
 
         listOfAutocampers.getItems().clear();
@@ -261,6 +263,10 @@ public class bookingPageController implements Initializable {
 
     }
 
+    /**
+     * Method to check if it is high season or low season. The input is from the DatePicker and seasonID is hardcoded
+     * because of time limitation.
+     */
     @FXML
     public void checkSeason(){
 
@@ -286,8 +292,10 @@ public class bookingPageController implements Initializable {
 
     }
 
-
-
+    /**
+     * This method returns a List of integers that represents the Autocamper IDs on all booked autocampers within the selected period.
+     * @return
+     */
     public List<Integer> findAllBookedAutocampers(){
 
         List allBookedAutocampersID = new ArrayList();
@@ -295,6 +303,11 @@ public class bookingPageController implements Initializable {
         return allBookedAutocampersID = dao.readAllBookedAutocampers(startDate.getValue(),endDate.getValue());
     }
 
+    /**
+     * Method to calculate the total price for a rental agreement including price for insurance, autocamper based on season,
+     * and the discount rate of the customer.
+     * @return is the total price as a double
+     */
     public double calculateTotalPrice(){
 
         AutoCamperDAO_impl dao = new AutoCamperDAO_impl();

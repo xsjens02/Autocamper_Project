@@ -4,11 +4,21 @@ public class AutoCamper {
 
     private int autoCamperID;
     private String autoCamperName;
-    private double price;
     private String facilities;
     private int category;
 
+    /**
+     * Default constructor
+     */
     public AutoCamper(){};
+
+    /**
+     * Constructor used when creating autocamper objects to lists and other instances
+     * @param autoCamperID
+     * @param autoCamperName
+     * @param facilities
+     * @param category
+     */
     public AutoCamper(int autoCamperID, String autoCamperName, String facilities, int category){
         this.autoCamperID = autoCamperID;
         this.autoCamperName = autoCamperName;
@@ -22,40 +32,13 @@ public class AutoCamper {
     public int getAutoCamperID() {
         return autoCamperID;
     }
-
-    public void setAutoCamperID(int autoCamperID) {
-        this.autoCamperID = autoCamperID;
-    }
-
     public String getAutoCamperName() {
         return autoCamperName;
     }
-
-    public void setAutoCamperName(String autoCamperName) {
-        this.autoCamperName = autoCamperName;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public String getFacilities() {
         return facilities;
     }
-
-    public void setFacilities(String facilities) {
-        this.facilities = facilities;
-    }
-
     public int getCategory() {
         return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
     }
 }
